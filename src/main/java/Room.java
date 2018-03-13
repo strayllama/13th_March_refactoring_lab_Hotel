@@ -9,13 +9,22 @@ public abstract class Room {
         this.guests = new ArrayList<Guest>();
     }
 
+    // GETTERS
     public int getCapacity() {
         return this.capacity;
     }
 
+    public ArrayList<Guest> getGuests() {
+        return new ArrayList<>(guests);
+    }
+
+
+
+    // OTHERS
     public int numberOfGuests() {
         return this.guests.size();
     }
+
     public boolean isVacant() {
         return numberOfGuests() == 0;
     }
@@ -34,9 +43,6 @@ public abstract class Room {
         this.guests.clear();
     }
 
-    public ArrayList<Guest> getGuests() {
-        return new ArrayList<>(guests);
-    }
 
     public void checkInGuests(ArrayList<Guest> guestsToCheckIn) {
         if ((guestsToCheckIn.size() > this.capacity) || !isVacant()) {

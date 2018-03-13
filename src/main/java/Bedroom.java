@@ -14,6 +14,8 @@ public class Bedroom extends Room {
         this.numberOfNights = 0;
     }
 
+
+    // GETTERS
     public int getNumber() {
         return this.number;
     }
@@ -30,6 +32,9 @@ public class Bedroom extends Room {
         return this.numberOfNights;
     }
 
+
+    // OTHER
+
     public void checkInGuestsForNumberOfNights(ArrayList<Guest> guests, int numberOfNights) {
         if (numberOfNights > 0) {
             super.checkInGuests(guests);
@@ -37,4 +42,7 @@ public class Bedroom extends Room {
         }
 
     }
+
+
+
 }
