@@ -3,12 +3,14 @@ import java.util.ArrayList;
 public class Hotel {
     private String name;
     private ArrayList<Bedroom> bedrooms;
+    private ArrayList<ICheckInGuests> eventRooms;
 //    private DiningRoom  diningRoom;
 //    private ConferenceRoom conferenceRoom;
 
     public Hotel(String name) {
         this.name = name;
         bedrooms = new ArrayList<Bedroom>();
+        eventRooms = new ArrayList<ICheckInGuests>();
     }
 
     //GETTERS
@@ -22,6 +24,14 @@ public class Hotel {
 
     public void setBedrooms(ArrayList<Bedroom> bedrooms) {
         this.bedrooms = bedrooms;
+    }
+
+    public ArrayList<ICheckInGuests> getEventRooms() {
+        return new ArrayList<ICheckInGuests>(eventRooms);
+    }
+
+    public setEventRooms(ArrayList<ICheckInGuests> eventRooms) {
+        this.eventRooms = eventRooms;
     }
 
 //    public DiningRoom getDiningRoom() {
