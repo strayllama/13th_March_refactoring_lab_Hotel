@@ -1,16 +1,17 @@
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Hotel {
     private String name;
     private ArrayList<Bedroom> bedrooms;
-    private ArrayList<ICheckInGuests> eventRooms;
+    private ArrayList<EventRoom> eventRooms;
 //    private DiningRoom  diningRoom;
 //    private ConferenceRoom conferenceRoom;
 
     public Hotel(String name) {
         this.name = name;
         bedrooms = new ArrayList<Bedroom>();
-        eventRooms = new ArrayList<ICheckInGuests>();
+        eventRooms = new ArrayList<EventRoom>();
     }
 
     //GETTERS
@@ -26,11 +27,11 @@ public class Hotel {
         this.bedrooms = bedrooms;
     }
 
-    public ArrayList<ICheckInGuests> getEventRooms() {
-        return new ArrayList<ICheckInGuests>(eventRooms);
+    public ArrayList<EventRoom> getEventRooms() {
+        return new ArrayList<EventRoom>(eventRooms);
     }
 
-    public setEventRooms(ArrayList<ICheckInGuests> eventRooms) {
+    public setEventRooms(ArrayList<EventRoom> eventRooms) {
         this.eventRooms = eventRooms;
     }
 
@@ -65,14 +66,14 @@ public class Hotel {
 //    public void checkInGuestsToDiningRoom(ArrayList<Guest> guests) {
 //        this.diningRoom.checkInGuests(guests);
 //    }
-    public void checkInGuestsToEventRoom(ICheckInGuests room, ArrayList<Guest> guests) {
-        room.checkInGuests(guests);
-    }
 
     // ICheckInGuests
 //    public void checkInGuestsToConferenceRoom(ArrayList<Guest> guests) {
 //        this.conferenceRoom.checkInGuests(guests);
 //    }
+
+
+
 
     public ArrayList<Guest> getGuestsCheckedIntoBedroom(int number) {
         for (Bedroom room : bedrooms) {
@@ -84,6 +85,16 @@ public class Hotel {
     }
 
     // ICheckInGuests ** Override to find room.... maybe?
+    public void checkGuestsIntoEventRoom(int number, ArrayList<Guest> guestList) {
+        for (EventRoom room : eventRooms) {
+            if (room.getNumber() == number) {
+                room.checkInGuests(guestList);
+                return;
+            }
+        }
+    }
+
+
     public void checkGuestsIntoBedroom(int number, ArrayList<Guest> guestList) {
         for (Bedroom room : bedrooms) {
             if (room.getNumber() == number) {
@@ -93,7 +104,7 @@ public class Hotel {
         }
     }
 
-    // ICheckInGuests  ** BUT OVERRIDE and ADD NIGHTS maybe?
+
     public void checkGuestsIntoBedroomForNumberOfNights(int number, ArrayList<Guest> guestList, int numberOfNights) {
         for (Bedroom room : bedrooms) {
             if (room.getNumber() == number) {
